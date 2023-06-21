@@ -7,6 +7,7 @@ import { APIResponse } from "./types/APIResponse";
 import { getAttestation, getTimetable, getTimetableMeta, getWeekNum, makeRequest } from "./lib/PenzGTUAPI";
 
 const app = express();
+const host = "0.0.0.0";
 const port = 3000;
 
 app.use(morgan("tiny"))
@@ -378,6 +379,6 @@ app.use(morgan("tiny"))
 
         res.json(response);
     })
-    .listen(port, () => {
-        console.log(`Server is running at http://localhost:${port}`);
+    .listen(port, host, () => {
+        console.log(`Server is running at http://${host}:${port}`);
     });
